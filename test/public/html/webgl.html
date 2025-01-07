@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebGL Cube Example</title>
+  <style>
+    body, html {
+      margin: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="webgl-canvas"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // Set up scene, camera, and renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl-canvas') });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    
+    // Create a cube geometry and material
+    const geometry = new THREE.BoxGeometry(); //new THREE.SphereGeometry(1, 32, 32); 
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    
+    // Add the cube to the scene
+    scene.add(cube);
+    
+    // Move the camera back so we can see the cube
+    camera.position.z = 5;
+
+    // Animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      // Rotate the cube for some animation
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+
+      // Render the scene from the perspective of the camera
+      renderer.render(scene, camera);
+    }
+
+    // Start the animation
+    animate();
+
+    // Resize handling
+    window.addEventListener('resize', function() {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+  </script>
+</body>
+</html>

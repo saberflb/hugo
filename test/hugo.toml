@@ -1,0 +1,59 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = 'github-style'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[params]
+  author = "saberflb"
+  description = "Wonderful Dream!"
+  github = ""
+  facebook = ""
+  twitter = ""
+  linkedin = ""
+  instagram = ""
+  tumblr = ""
+  email = ""
+  url = ""
+  keywords = "blog, google analytics"
+  rss = true
+  lastmod = true
+  favicon = "https://saberflb.github.io/hugo/images/github-mark.png"
+  avatar = "https://saberflb.github.io/hugo/images/avatar.png"
+  headerIcon = "https://saberflb.github.io/hugo/images/github-mark-white.png"
+  location = ""
+  userStatusEmoji = "😀"
+  enableGitalk = true
+  enableSearch = true
+
+  [params.gitalk]
+    clientID = "__GITALK_CLIENTID__" # Your client ID
+    clientSecret = "__GITALK_CLIENT_SECRET__" # Your client secret
+    repo = "hugo" # 您的博客的github地址Repository name，例如：xxxx.github.io
+    owner = "saberflb" # 您的GitHub ID
+    admin = "saberflb" # 您的GitHub ID
+    id = "location.pathname" # 文章页面的链接地址就是ID
+    labels = "gitalk" # Github issue labels. If you used to use Gitment, you can change it
+    perPage = 15 # Pagination size, with maximum 100.
+    pagerDirection = "last" # Comment sorting direction, available values are 'last' and 'first'.
+    createIssueManually = true # 设置为true，如果是管理员登录，会自动创建issue，如果是false，需要管理员手动添加第一个评论(issue)
+    distractionFreeMode = false # Enable hot key (cmd|ctrl + enter) submit comment.
+    proxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token" # 可以自行添加反向代理
+  [[params.links]]
+    title = "Link"
+    href = "https://github.com/saberflb"
+  [[params.links]]
+    title = "Link2"
+    href = ""
+    icon = "https://saberflb.github.io/hugo/images/avatar.png"
+
+[frontmatter]
+  lastmod = ["lastmod", ":fileModTime", ":default"]
+
+[services]
+  [services.googleAnalytics]
+    ID = "G-SV463WPXG0"
